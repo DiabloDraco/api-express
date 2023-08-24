@@ -5,7 +5,7 @@ import path from 'path';
 
 export let GETVIDEO = async (req, res) => {
     try {
-        const videoName = req.params.name;
+        const videoName = req.query.video;
         const videoPath = `videos/${videoName}`;
 
         if (!fs.existsSync(videoPath)) {
