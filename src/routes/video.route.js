@@ -17,7 +17,7 @@ videoRouter.get('/videos/getNames', checkToken, GETVIDEONAMES)
 
 videoRouter.post('/videos', checkToken, upload.single('video'), POSTVIDEO);
 
-videoRouter.get('/videos/:name', checkToken, GETVIDEO);
+videoRouter.get('/videos', checkToken, GETVIDEO);
 
 videoRouter.delete('/videos/:name', checkToken, DELETEVIDEO)
 
