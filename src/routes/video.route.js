@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { DELETEVIDEO, GETVIDEO, GETVIDEONAMES, POSTVIDEO } from "../controllers/video.controller.js";
 import multer from 'multer';
+import checkToken from "../middlewares/checkToken.js";
 
 
 const upload = multer({
@@ -12,12 +13,12 @@ const upload = multer({
 
 const videoRouter = Router()
 
-videoRouter.get('/videos/getNames', GETVIDEONAMES)
+videoRouter.get('/videos/getNames', checkToken, GETVIDEONAMES)
 
-videoRouter.post('/videos', upload.single('video'), POSTVIDEO);
+videoRouter.post('/videos', checkToken, upload.single('video'), POSTVIDEO);
 
-videoRouter.get('/videos/:name', GETVIDEO);
+videoRouter.get('/videos/:name', checkToken, GETVIDEO);
 
-videoRouter.delete('/videos/:name', DELETEVIDEO)
+videoRouter.delete('/videos/:name', checkToken, DELETEVIDEO)
 
 export default videoRouter
