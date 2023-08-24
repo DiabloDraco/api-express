@@ -1,9 +1,9 @@
 export default async (req, res, next) => {
     try {
-        let res = await fetch('https://api.expert.uz/api/public/check/token?user_token=' + req.query.token, {
+        await fetch('https://api.expert.uz/api/public/check/token?user_token=' + req.query.token, {
             method: "GET"
         }).then(res => res.json()).then(data => {
-            if (data.data == true) {
+            if (data.data.case == true) {
                 return next()
             } else {
                 res.status(401).json({ status: 401, message: 'Unauthorized user' })
