@@ -5,7 +5,7 @@ import path from "path";
 export let GETVIDEO = async (req, res) => {
   try {
     const videoName = req.query.video;
-    const videoPath = `videos/${videoName}`;
+    const videoPath = `./videos/${videoName}`;
 
     if (!fs.existsSync(videoPath)) {
       return res.status(404).send("Video not found.");
@@ -34,8 +34,8 @@ export let POSTVIDEO = (req, res) => {
     const originalFileName = req.file.originalname;
     const extension = path.extname(originalFileName);
     const newFileName = `${req.file.filename}${extension}`;
-    const oldPath = `videos/${req.file.filename}`;
-    const newPath = `videos/${newFileName}`;
+    const oldPath = `./videos/${req.file.filename}`;
+    const newPath = `./videos/${newFileName}`;
 
     fs.renameSync(oldPath, newPath);
 
@@ -52,7 +52,7 @@ export let POSTVIDEO = (req, res) => {
 export let DELETEVIDEO = (req, res) => {
   try {
     const videoName = req.params.name;
-    const videoPath = `videos/${videoName}`;
+    const videoPath = `./videos/${videoName}`;
 
     if (!fs.existsSync(videoPath)) {
       return res.status(404).send("Video not found.");

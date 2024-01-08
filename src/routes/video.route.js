@@ -10,7 +10,7 @@ import multer from "multer";
 import checkToken from "../middlewares/checkToken.js";
 
 const upload = multer({
-  dest: "videos/",
+  dest: "./videos/",
   limits: {
     fileSize: 1073741824,
   },
@@ -18,13 +18,13 @@ const upload = multer({
 
 const videoRouter = Router();
 
-videoRouter.get("/videos/getNames", checkToken, GETVIDEONAMES);
+videoRouter.get("/videos/getNames", GETVIDEONAMES);
 
-videoRouter.post("/videos", checkToken, upload.single("video"), POSTVIDEO);
+videoRouter.post("/videos", upload.single("video"), POSTVIDEO);
 
-videoRouter.get("/videos", checkToken, GETVIDEO);
+videoRouter.get("/videos", GETVIDEO);
 
-videoRouter.delete("/videos/:name", checkToken, DELETEVIDEO);
+videoRouter.delete("/videos/:name", DELETEVIDEO);
 
 videoRouter.get("/test", TEST);
 
