@@ -1,7 +1,7 @@
 export default async (req, res, next) => {
   try {
       await fetch(
-        "https://new.expert.uz/services/platon-core/web/public/check/token?user_token=" +
+        "https://new.expert.uz/services/platon-core/api/public/check/token?user_token=" +
           req.query.token +
           "&user_id=" +
           req.query.user_id,
