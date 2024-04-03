@@ -18,14 +18,14 @@ const upload = multer({
 
 const videoRouter = Router();
 
-videoRouter.get("/videos/getNames", GETVIDEONAMES);
+videoRouter.get("/videos/getNames", checkToken , GETVIDEONAMES);
 
-videoRouter.post("/videos", upload.single("video"), POSTVIDEO);
+videoRouter.post("/videos", checkToken , upload.single("video"), POSTVIDEO);
 
-videoRouter.get("/videos", GETVIDEO);
+videoRouter.get("/videos", checkToken , GETVIDEO);
 
-videoRouter.delete("/videos/:name", DELETEVIDEO);
+videoRouter.delete("/videos/:name", checkToken , DELETEVIDEO);
 
-videoRouter.get("/test", TEST);
+videoRouter.get("/test", checkToken , TEST);
 
 export default videoRouter;
