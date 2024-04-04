@@ -1,7 +1,7 @@
 export default async (req, res, next) => {
   try {
       await fetch(
-        "https://new.expert.uz/services/platon-core/api/public/check/token?user_token=" +
+        "https://expert.uz/services/platon-core/api/public/check/token?user_token=" +
           req.query.token +
           "&user_id=" +
           req.query.user_id,
@@ -11,6 +11,7 @@ export default async (req, res, next) => {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data)
           if (data.data.check == true) {
             return next();
           } else {
